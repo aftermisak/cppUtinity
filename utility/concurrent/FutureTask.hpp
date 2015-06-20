@@ -58,14 +58,14 @@ namespace utility{
 			while( this->_state != EState::e_over)
 			{
 				unsigned msBeginWait = (unsigned)getApplicationMilliSeconds();
-				if(!_condition->wait(ms))//³¬Ê±
+				if(!_condition->wait(ms))//è¶…æ—¶
 				{
 					return false;
 				}
-				else//Î´³¬Ê±£¬¼õÈ¥ÒÑ¾­µÈ´ıµÄÊÂ¼ş
+				else//æœªè¶…æ—¶ï¼Œå‡å»å·²ç»ç­‰å¾…çš„äº‹ä»¶
 				{
 					unsigned msWait = (unsigned)getApplicationMilliSeconds() - msBeginWait;
-					if( msWait >= remainMs )//¿ÉÄÜ·¢ÉúµÄÇé¿ö£¬Ò²ÅĞ¶¨ÎªÒÑ¾­³¬Ê±
+					if( msWait >= remainMs )//å¯èƒ½å‘ç”Ÿçš„æƒ…å†µï¼Œä¹Ÿåˆ¤å®šä¸ºå·²ç»è¶…æ—¶
 					{
 						return false;
 					}

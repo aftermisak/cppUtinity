@@ -2,8 +2,8 @@
 namespace utility
 {
 	/**
-		将类标记为不可拷贝构造与复制操作
-		使用方式，私有继承该类，example class Factory : private utility::UnCopyable
+		灏嗙被鏍囪涓轰笉鍙嫹璐濇瀯閫犱笌澶嶅埗鎿嶄綔
+		浣跨敤鏂瑰紡锛岀鏈夌户鎵胯绫伙紝example class Factory : private utility::UnCopyable
 
 	*/
 	class UnCopyable

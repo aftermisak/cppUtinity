@@ -18,7 +18,7 @@ Thread::Thread(FunRunnable fRunnable):
 
 }
 Thread::Thread():
-Thread([](){})//Î¯ÍÐ¹¹Ôì
+Thread([](){})//å§”æ‰˜æž„é€ 
 {
 
 }

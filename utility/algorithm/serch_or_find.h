@@ -9,9 +9,9 @@ namespace utility
 	namespace algorithm
 	{
 		/*
-			ÕÒ³ö·¶Î§ÄÚ£¬µÚÒ»¸öÓëvalueÏàµÈµÄÔªËØ
-		ÕÒ²»µ½·µ»Ølast
-			ÒªÇóÀàĞÍÖ§³Ö == ÔËËã·û
+			æ‰¾å‡ºèŒƒå›´å†…ï¼Œç¬¬ä¸€ä¸ªä¸valueç›¸ç­‰çš„å…ƒç´ 
+		æ‰¾ä¸åˆ°è¿”å›last
+			è¦æ±‚ç±»å‹æ”¯æŒ == è¿ç®—ç¬¦
 		*/
 		template< typename ForwardIterator >
 		ForwardIterator find(ForwardIterator first, ForwardIterator last, typename const iterator_traits<ForwardIterator>::value_type& value
@@ -28,10 +28,10 @@ namespace utility
 		}
 
 		/*
-			ÔÚ¸ø¶¨·¶Î§ÄÚÕÒµ½f(elemt) == trueµÄµÚÒ»¸öÔªËØ
-		ÕÒ²»µ½·µ»Ølast
+			åœ¨ç»™å®šèŒƒå›´å†…æ‰¾åˆ°f(elemt) == trueçš„ç¬¬ä¸€ä¸ªå…ƒç´ 
+		æ‰¾ä¸åˆ°è¿”å›last
 
-			//ps:ÕâÀïFn²»ĞèÒªÄ¬ÈÏÀàĞÍ£¬±ØĞëÓÉµ÷ÓÃÕß¸ø³ö£¬Ò²²ÅÓĞÒâÒå
+			//ps:è¿™é‡ŒFnä¸éœ€è¦é»˜è®¤ç±»å‹ï¼Œå¿…é¡»ç”±è°ƒç”¨è€…ç»™å‡ºï¼Œä¹Ÿæ‰æœ‰æ„ä¹‰
 		*/
 		template< typename ForwardIterator, typename Fn>
 		ForwardIterator find(ForwardIterator first, ForwardIterator last, Fn f)
@@ -46,8 +46,8 @@ namespace utility
 			return first;
 		}
 		/*
-			ÔÚ¸ø¶¨·¶Î§[first,last)ÄÚ£¬Ñ°ÕÒÊÇ·ñ´æÔÚÔªËØ£¬Óë[first2,last2)ÖĞµÄÄ³¸öÔªËØÊ¹µÃf(valueInRange1,valueInRange2) == true
-		Èç¹û´æÔÚ£¬·µ»ØµÚÒ»¸ö·ûºÏ¸ÃÇé¿öµÄÔªËØµÄµü´úÆ÷£¬²»´æÔÚ·µ»Ølast
+			åœ¨ç»™å®šèŒƒå›´[first,last)å†…ï¼Œå¯»æ‰¾æ˜¯å¦å­˜åœ¨å…ƒç´ ï¼Œä¸[first2,last2)ä¸­çš„æŸä¸ªå…ƒç´ ä½¿å¾—f(valueInRange1,valueInRange2) == true
+		å¦‚æœå­˜åœ¨ï¼Œè¿”å›ç¬¬ä¸€ä¸ªç¬¦åˆè¯¥æƒ…å†µçš„å…ƒç´ çš„è¿­ä»£å™¨ï¼Œä¸å­˜åœ¨è¿”å›last
 		*/
 		template< typename ForwardIterator , typename ForwardIterator2, typename Fn = equal_to<void> >
 		ForwardIterator find(ForwardIterator first, ForwardIterator last, ForwardIterator2 first2, ForwardIterator2 last2, Fn f = equal_to<>())
@@ -72,8 +72,8 @@ namespace utility
 		}
 
 		/*
-			ÕÒµ½·¶Î§ÄÚ£¬Á¬ĞøÁ½¸öÔªËØÏàµÈµÄÇé¿ö£¬»ñÈ¡·ûºÏ¸ø¶¨º¯ÊıÎ½´Ê
-		²¢ÇÒ·µ»ØÖ¸ÏòÆäÖĞµÚÒ»¸öÔªËØµÄµü´úÆ÷.
+			æ‰¾åˆ°èŒƒå›´å†…ï¼Œè¿ç»­ä¸¤ä¸ªå…ƒç´ ç›¸ç­‰çš„æƒ…å†µï¼Œè·å–ç¬¦åˆç»™å®šå‡½æ•°è°“è¯
+		å¹¶ä¸”è¿”å›æŒ‡å‘å…¶ä¸­ç¬¬ä¸€ä¸ªå…ƒç´ çš„è¿­ä»£å™¨.
 		*/
 		template<typename ForwardIterator, typename Fn = equal_to<>>
 		ForwardIterator adjacent_find(ForwardIterator first, ForwardIterator last, Fn f = equal_to<>())
@@ -94,8 +94,8 @@ namespace utility
 			return last;
 		}
 		/*
-			ÔÚ¸ø¶¨Çø¼ä[first, last)ÖĞÅĞ¶ÏÊÇ·ñËùÓĞÔªËØ¶¼Ê¹µÃ f(value) == true,
-		Èç¹ûËùÓĞ¶¼¸´ºÏ£¬·µ»Ølast, Èç¹û²¢²»¶¼¸´ºÏ£¬·µ»ØµÚÒ»¸ö²»·ûºÏµÄÔªËØµÄµü´úÆ÷
+			åœ¨ç»™å®šåŒºé—´[first, last)ä¸­åˆ¤æ–­æ˜¯å¦æ‰€æœ‰å…ƒç´ éƒ½ä½¿å¾— f(value) == true,
+		å¦‚æœæ‰€æœ‰éƒ½å¤åˆï¼Œè¿”å›last, å¦‚æœå¹¶ä¸éƒ½å¤åˆï¼Œè¿”å›ç¬¬ä¸€ä¸ªä¸ç¬¦åˆçš„å…ƒç´ çš„è¿­ä»£å™¨
 		*/
 		template< typename  ForwardIterator, typename Fun>
 		ForwardIterator all_of(ForwardIterator first, ForwardIterator last, Fun f)
@@ -104,14 +104,14 @@ namespace utility
 			{
 				if (!f(*first))
 				{
-					return first;//·µ»ØµÚÒ»¸ö²»·ûºÏµÄ
+					return first;//è¿”å›ç¬¬ä¸€ä¸ªä¸ç¬¦åˆçš„
 				}
 			}
 			return last;
 		}
 		/*
-			ÔÚ¸ø¶¨Çø¼ä[first, last)ÖĞÅĞ¶ÏÊÇ·ñ´æÔÚÔªËØ¶¼Ê¹µÃ f(value) == true,
-		Èç¹û´æÔÚÔªËØ¸´ºÏ£¬·µ»ØµÚÒ»¸ö¸ÃÔªËØµÄµü´úÆ÷, Èç¹û¶¼²»¸´ºÏ£¬·µ»Ølast
+			åœ¨ç»™å®šåŒºé—´[first, last)ä¸­åˆ¤æ–­æ˜¯å¦å­˜åœ¨å…ƒç´ éƒ½ä½¿å¾— f(value) == true,
+		å¦‚æœå­˜åœ¨å…ƒç´ å¤åˆï¼Œè¿”å›ç¬¬ä¸€ä¸ªè¯¥å…ƒç´ çš„è¿­ä»£å™¨, å¦‚æœéƒ½ä¸å¤åˆï¼Œè¿”å›last
 		*/
 		template< typename  ForwardIterator, typename Fun>
 		ForwardIterator any_of(ForwardIterator first, ForwardIterator last, Fun f)
@@ -127,39 +127,39 @@ namespace utility
 		}
 
 		///*
-		//	ÔÚÖ¸¶¨·¶Î§ÄÚ£¬ÕÒµ½µÚÒ»¸ö>=valueµÄÎ»ÖÃ£¬
-		//ÕÒ²»µ½·µ»Ølast
-		//	ÒªÇóĞòÁĞÓĞĞò,ÓÃµÄÊÇ¶ş·Ö·½Ê½£¬Èç¹û²»ÊÇËæ»úµü´úÆ÷£¬
-		//ÆäĞ§ÂÊºÜµÍ£¬Ëæ»úµü´úÆ÷Îª¶ÔÊıÊ±¼ä¸´ÔÓ¶È
-		//	Ä¬ÈÏÒªÇóType Ö§³Ö < ²Ù×÷·û
+		//	åœ¨æŒ‡å®šèŒƒå›´å†…ï¼Œæ‰¾åˆ°ç¬¬ä¸€ä¸ª>=valueçš„ä½ç½®ï¼Œ
+		//æ‰¾ä¸åˆ°è¿”å›last
+		//	è¦æ±‚åºåˆ—æœ‰åº,ç”¨çš„æ˜¯äºŒåˆ†æ–¹å¼ï¼Œå¦‚æœä¸æ˜¯éšæœºè¿­ä»£å™¨ï¼Œ
+		//å…¶æ•ˆç‡å¾ˆä½ï¼Œéšæœºè¿­ä»£å™¨ä¸ºå¯¹æ•°æ—¶é—´å¤æ‚åº¦
+		//	é»˜è®¤è¦æ±‚Type æ”¯æŒ < æ“ä½œç¬¦
 		//*/
 		//template< typename Fun = less<>, typename ForwardIterator, typename Type >
 		//ForwardIterator lower_bound(ForwardIterator first, ForwardIterator last, const Type & value)
 		//{
 		//	ForwardIterator it;
 		//	iterator_traits<ForwardIterator>::difference_type count, step;
-		//	count = distance(first, last);//¸öÊı
+		//	count = distance(first, last);//ä¸ªæ•°
 		//	Fun f;
-		//	while (count > 0)//Ê£ÓàµÄ¸öÊı
+		//	while (count > 0)//å‰©ä½™çš„ä¸ªæ•°
 		//	{
-		//		it = first; step = count / 2; advance(it, step);//ÈÃitÇ°½øµ½µ±Ç°first+ count/2µÄµØ·½
-		//		if (f(*it, value)) //Èç¹û¸ÃÔªËØĞ¡ÓÚvalue,ÄÇÃ´¿ÉÒÔ°ÑÇ°ÃæµÄÔªËØÈ«²¿ÅÅ³ıµô
+		//		it = first; step = count / 2; advance(it, step);//è®©itå‰è¿›åˆ°å½“å‰first+ count/2çš„åœ°æ–¹
+		//		if (f(*it, value)) //å¦‚æœè¯¥å…ƒç´ å°äºvalue,é‚£ä¹ˆå¯ä»¥æŠŠå‰é¢çš„å…ƒç´ å…¨éƒ¨æ’é™¤æ‰
 		//		{
-		//			first = ++it;//firstÖ¸Ïòfirst + count/2µÄÏÂÒ»¸ö
-		//			count -= step + 1;//ÅÅ³ıµôµÄÊıÁ¿
+		//			first = ++it;//firstæŒ‡å‘first + count/2çš„ä¸‹ä¸€ä¸ª
+		//			count -= step + 1;//æ’é™¤æ‰çš„æ•°é‡
 		//		}
-		//		else  //Èç¹û¸ÃÖµ²»Ğ¡ÓÚvalue,½«ºóÃæµÄÔªËØÅÅ³ıµô 
+		//		else  //å¦‚æœè¯¥å€¼ä¸å°äºvalue,å°†åé¢çš„å…ƒç´ æ’é™¤æ‰ 
 		//			count = step;
 		//	}
 		//	return first;
 		//}
 		/*
-			ÔÚ¸ø¶¨·¶Î§ [first, last)ÄÚ£¬ÕÒµ½µÚÒ»¸ö²»Âú×ã f(*it, value) == trueµÄÔªËØ
-		£¨Ä¬ÈÏ¾ÍÊÇ²»Âú×ã *it < value,¼´µÚÒ»¸ö>=valueµÄÔªËØ£©µÄµü´úÆ÷£¬Èç¹û¶¼Âú×ã£¬·µ»Ølast
+			åœ¨ç»™å®šèŒƒå›´ [first, last)å†…ï¼Œæ‰¾åˆ°ç¬¬ä¸€ä¸ªä¸æ»¡è¶³ f(*it, value) == trueçš„å…ƒç´ 
+		ï¼ˆé»˜è®¤å°±æ˜¯ä¸æ»¡è¶³ *it < value,å³ç¬¬ä¸€ä¸ª>=valueçš„å…ƒç´ ï¼‰çš„è¿­ä»£å™¨ï¼Œå¦‚æœéƒ½æ»¡è¶³ï¼Œè¿”å›last
 			
-			ÒªÇóĞòÁĞÓĞĞò£¬¶øÇÒÅÅĞòµÄÎ½´ÊÓë¸Ãº¯ÊıµÄÎ½´ÊµÈ¼Û¡£
-			Ê¹ÓÃ¶ş·Ö²éÕÒ·½Ê½£¬²»½¨Òé·ÇËæ»úµü´úÆ÷Ê¹ÓÃ¸Ã·½·¨¡£
-			Ä¬ÈÏÇé¿öÏÂµü´úÆ÷Ö¸ÏòµÄÀàĞÍÒªÖ§³Ö < ²Ù×÷·û
+			è¦æ±‚åºåˆ—æœ‰åºï¼Œè€Œä¸”æ’åºçš„è°“è¯ä¸è¯¥å‡½æ•°çš„è°“è¯ç­‰ä»·ã€‚
+			ä½¿ç”¨äºŒåˆ†æŸ¥æ‰¾æ–¹å¼ï¼Œä¸å»ºè®®ééšæœºè¿­ä»£å™¨ä½¿ç”¨è¯¥æ–¹æ³•ã€‚
+			é»˜è®¤æƒ…å†µä¸‹è¿­ä»£å™¨æŒ‡å‘çš„ç±»å‹è¦æ”¯æŒ < æ“ä½œç¬¦
 		*/
 		template< typename Fun = less<>, typename ForwardIterator>
 		ForwardIterator lower_bound(ForwardIterator first, ForwardIterator last, typename const iterator_traits<ForwardIterator>::value_type& value,Fun f = less<>())
@@ -181,9 +181,9 @@ namespace utility
 			return first;//or last
 		}
 		/*
-			ÔÚ¸ø¶¨·¶Î§ [first, last)ÄÚ£¬ÕÒµ½µÚÒ»¸ö²»Âú×ã f(*it, value) == trueµÄÔªËØ
-		£¨Ä¬ÈÏ¾ÍÊÇ²»Âú×ã *it <= value,¼´µÚÒ»¸ö>valueµÄÔªËØ£©µÄµü´úÆ÷£¬Èç¹û¶¼Âú×ã£¬·µ»Ølast
-			ÏêÏ¸¼û lower_bound
+			åœ¨ç»™å®šèŒƒå›´ [first, last)å†…ï¼Œæ‰¾åˆ°ç¬¬ä¸€ä¸ªä¸æ»¡è¶³ f(*it, value) == trueçš„å…ƒç´ 
+		ï¼ˆé»˜è®¤å°±æ˜¯ä¸æ»¡è¶³ *it <= value,å³ç¬¬ä¸€ä¸ª>valueçš„å…ƒç´ ï¼‰çš„è¿­ä»£å™¨ï¼Œå¦‚æœéƒ½æ»¡è¶³ï¼Œè¿”å›last
+			è¯¦ç»†è§ lower_bound
 		*/
 		template< typename Fun = less_equal<>, typename ForwardIterator>
 		ForwardIterator upper_bound(ForwardIterator first, ForwardIterator last, typename const iterator_traits<ForwardIterator>::value_type& value, Fun f = less_equal<>())
@@ -205,18 +205,18 @@ namespace utility
 			return lower_bound(first, last, value, less_equal<>());//simple implement
 		}
 		/*
-			ÔÚÖ¸¶¨·¶Î§ÄÚ£¬ÕÒµ½µÚÒ»¸ö==valueµÄÎ»ÖÃ£¬
-		ÕÒ²»µ½·µ»Ølast
-			ÒªÇóĞòÁĞÓĞĞò,ÓÃµÄÊÇ¶ş·Ö·½Ê½£¬Èç¹û²»ÊÇËæ»úµü´úÆ÷£¬
-		ÆäĞ§ÂÊ¼«µÍ£¬Ëæ»úµü´úÆ÷Îª¶ÔÊıÊ±¼ä¸´ÔÓ¶È
-			ÒªÇóTypeÄ¬ÈÏÖ§³Ö < == >Èı¸ö²Ù×÷·û£¬²¢ÇÒÓĞÓ¦ÓĞµÄ¶Ô³ÆĞĞÎª
+			åœ¨æŒ‡å®šèŒƒå›´å†…ï¼Œæ‰¾åˆ°ç¬¬ä¸€ä¸ª==valueçš„ä½ç½®ï¼Œ
+		æ‰¾ä¸åˆ°è¿”å›last
+			è¦æ±‚åºåˆ—æœ‰åº,ç”¨çš„æ˜¯äºŒåˆ†æ–¹å¼ï¼Œå¦‚æœä¸æ˜¯éšæœºè¿­ä»£å™¨ï¼Œ
+		å…¶æ•ˆç‡æä½ï¼Œéšæœºè¿­ä»£å™¨ä¸ºå¯¹æ•°æ—¶é—´å¤æ‚åº¦
+			è¦æ±‚Typeé»˜è®¤æ”¯æŒ < == >ä¸‰ä¸ªæ“ä½œç¬¦ï¼Œå¹¶ä¸”æœ‰åº”æœ‰çš„å¯¹ç§°è¡Œä¸º
 		*/
 		template< typename Fun = less<void>, typename ForwardIterator>
 		ForwardIterator binary_search(ForwardIterator first, ForwardIterator last, typename const iterator_traits<ForwardIterator>::value_type& value,Fun f = less<void>())
 		{
 			first = lower_bound<Fun>(first, last, value, f);
 			
-			if (first != last && *first == value)//²»Ğ¡ÓÚµÄµÚÒ»¸öµÈÓÚ
+			if (first != last && *first == value)//ä¸å°äºçš„ç¬¬ä¸€ä¸ªç­‰äº
 			{
 				return first;
 			}
@@ -227,9 +227,9 @@ namespace utility
 		}
 
 		/*
-			·µ»Ø[first, last)¼äµÄÔªËØ¸öÊı¡£
-		Èç¹ûÊÇËæ»úµü´úÆ÷£¬Ê±¼ä¸´ÔÓ¶ÈÎª³£Á¿£¬
-		·ñÔò·ÇÏßĞÔ¸´ÔÓ¶È
+			è¿”å›[first, last)é—´çš„å…ƒç´ ä¸ªæ•°ã€‚
+		å¦‚æœæ˜¯éšæœºè¿­ä»£å™¨ï¼Œæ—¶é—´å¤æ‚åº¦ä¸ºå¸¸é‡ï¼Œ
+		å¦åˆ™éçº¿æ€§å¤æ‚åº¦
 		*/
 		template<typename ForwardIterator>
 		unsigned long count(ForwardIterator first, ForwardIterator last)
@@ -237,8 +237,8 @@ namespace utility
 			return (unsigned long) distance(first, last);
 		}
 		/*
-			·µ»Ø[first, last)¼äµÄÔªËØ  Âú×ãf(*it) == true¸öÊı¡£
-		ÏßĞÔ¸´ÔÓ¶È
+			è¿”å›[first, last)é—´çš„å…ƒç´   æ»¡è¶³f(*it) == trueä¸ªæ•°ã€‚
+		çº¿æ€§å¤æ‚åº¦
 		*/
 		template<typename ForwardIterator, typename Fn >
 		unsigned long count(ForwardIterator first, ForwardIterator last, Fn f)
@@ -254,9 +254,9 @@ namespace utility
 			return ret;
 		}
 		/*
-			ÔÚ[first1, last1)ĞòÁĞÖĞÑ°ÕÒ ×ÓĞòÁĞ[first2, last2)£¬
-		Èô´æÔÚÆ¥Åä£¬·µ»Ø[first1, last1)ÖĞÆ¥ÅäĞòÁĞµÄÆğÊ¼Î»ÖÃ£¬²»´æÔÚ
-		Æ¥Åä·µ»Ølast1
+			åœ¨[first1, last1)åºåˆ—ä¸­å¯»æ‰¾ å­åºåˆ—[first2, last2)ï¼Œ
+		è‹¥å­˜åœ¨åŒ¹é…ï¼Œè¿”å›[first1, last1)ä¸­åŒ¹é…åºåˆ—çš„èµ·å§‹ä½ç½®ï¼Œä¸å­˜åœ¨
+		åŒ¹é…è¿”å›last1
 		*/
 		template <class ForwardIterator1, class ForwardIterator2, class Fn = equal_to<>>
 		ForwardIterator1 search(ForwardIterator1 first1, ForwardIterator1 last1,

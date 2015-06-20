@@ -5,7 +5,7 @@
 namespace utility
 {
 	/**
-		±¾µØ×ÊÔ´°ïÖúÀà
+		æœ¬åœ°èµ„æºå¸®åŠ©ç±»
 		example:
 			lock.lock();
 			{
@@ -15,7 +15,7 @@ namespace utility
 				...//other code
 			}               //onlock invoke auto
 			
-		@param callback Ò»¸öº¯Êı¶ÔÏó£¬±¾ÀàµÄÊµÀıÎö¹¹Ê±»áµ÷ÓÃ¸Ã·½·¨
+		@param callback ä¸€ä¸ªå‡½æ•°å¯¹è±¡ï¼Œæœ¬ç±»çš„å®ä¾‹ææ„æ—¶ä¼šè°ƒç”¨è¯¥æ–¹æ³•
 	*/
 	class LocalResGuard : private UnCopyable , public UnNewable
 	{ 
@@ -27,8 +27,8 @@ namespace utility
 		std::function<void()> _callback;
 	};
 	/**
-		Èç¹ûĞèÒªÓĞ×Ô¼ºÀàµÄhand new operator·½·¨¡£
-	¼Ì³Ğ²¢Ê¹ÓÃÏàÓ¦µÄÀà×÷ÎªÄ£°å²ÎÊı
+		å¦‚æœéœ€è¦æœ‰è‡ªå·±ç±»çš„hand new operatoræ–¹æ³•ã€‚
+	ç»§æ‰¿å¹¶ä½¿ç”¨ç›¸åº”çš„ç±»ä½œä¸ºæ¨¡æ¿å‚æ•°
 	*/
 	template<class T>
 	class NewHandler
@@ -42,10 +42,10 @@ namespace utility
 	template<class T>
 	void* NewHandler<T>::operator new(size_t size)
 	{
-		auto old_handler = std::set_new_handler(NewHandler<T>::new_handler);//¸Ä±ä
+		auto old_handler = std::set_new_handler(NewHandler<T>::new_handler);//æ”¹å˜
 
 		auto guard = std::shared_ptr<void>(old_handler, [](void* handler){
-			std::set_new_handler( static_cast<void (*)()>( handler));//Éè»Ø
+			std::set_new_handler( static_cast<void (*)()>( handler));//è®¾å›
 		});
 		return ::new(size);
 	}

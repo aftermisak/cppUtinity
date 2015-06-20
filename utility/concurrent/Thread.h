@@ -10,11 +10,11 @@ namespace utility{
 namespace concurrenct{
 	/*
 		Thread
-		Á½ÖÖÊ¹ÓÃ·½°¸
-		1.¹¹Ôì£¬Ê¹ÓÃstd::function
-		2.¼Ì³Ğ²¢ÇÒ¸²¸ÇÖØĞ´run·½·¨
-		1Ìá¹©µÄÊÇº¯ÊıÊ½·½Ê½£¬2Ìá¹©µÄÊÇ¶ÔÏóÊ½·½Ê½
-		²»ÒªÍ¬Ê±Ê¹ÓÃÁ½ÖÖ·½Ê½£¬·ñÔò½«Ôì³É´íÎóĞĞÎª
+		ä¸¤ç§ä½¿ç”¨æ–¹æ¡ˆ
+		1.æ„é€ ï¼Œä½¿ç”¨std::function
+		2.ç»§æ‰¿å¹¶ä¸”è¦†ç›–é‡å†™runæ–¹æ³•
+		1æä¾›çš„æ˜¯å‡½æ•°å¼æ–¹å¼ï¼Œ2æä¾›çš„æ˜¯å¯¹è±¡å¼æ–¹å¼
+		ä¸è¦åŒæ—¶ä½¿ç”¨ä¸¤ç§æ–¹å¼ï¼Œå¦åˆ™å°†é€ æˆé”™è¯¯è¡Œä¸º
 	*/
 	class Thread : public Runnable , private UnCopyable
 	{
@@ -25,21 +25,21 @@ namespace concurrenct{
 	protected:
 		virtual void run() override { };
 	public:
-		//explicit Thread( shared_ptr<Runnable> runnable);·ÏÆú20150204
+		//explicit Thread( shared_ptr<Runnable> runnable);åºŸå¼ƒ20150204
 		/*
-			º¯ÊıÊ½¹¹Ôì£¬ÓÃÓÚÊ¹ÓÃ·½Ê½1
+			å‡½æ•°å¼æ„é€ ï¼Œç”¨äºä½¿ç”¨æ–¹å¼1
 		*/
 		explicit Thread(FunRunnable fRunnable);
 		/*
-			Ä¬ÈÏ¹¹Ôì£¬ÈÃ×ÓÀàÕı³£¹¹Ôì,ÓÃÓÚÊ¹ÓÃ·½Ê½2
+			é»˜è®¤æ„é€ ï¼Œè®©å­ç±»æ­£å¸¸æ„é€ ,ç”¨äºä½¿ç”¨æ–¹å¼2
 		*/
 		Thread();
 		/*
-			¿ªÆôÏß³Ì
+			å¼€å¯çº¿ç¨‹
 		*/
 		virtual void start() final;
 		/*
-			¿ªÆôÏß³Ì²¢µÈ´ıÖ´ĞĞ½áÊø
+			å¼€å¯çº¿ç¨‹å¹¶ç­‰å¾…æ‰§è¡Œç»“æŸ
 		*/
 		virtual void join() final;
 		virtual ~Thread();

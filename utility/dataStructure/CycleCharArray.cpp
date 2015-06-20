@@ -21,49 +21,49 @@ bool CycleCharArray::get(char * buff, const unsigned  size) const
 		return false;
 	}
 
-	//Ëã¿ªÊ¼ÏÂ±ê
+	//ç®—å¼€å§‹ä¸‹æ ‡
 	int beginIndex = _lastIndex - _dataSize;
 	if (beginIndex < 0)
 	{
 		beginIndex = _bufferSize + beginIndex;
 	}
-	//È¡Êı¾İ
+	//å–æ•°æ®
 	int indexForCpy = beginIndex;
 	for (unsigned i = 0; i < size; i++)
 	{
 		buff[i] = _buffer[indexForCpy++];
-		if (indexForCpy == _bufferSize)//Ô½½ç
+		if (indexForCpy == _bufferSize)//è¶Šç•Œ
 		{
 			indexForCpy = 0;
 		}
 	}
-	//·µ»Ø
+	//è¿”å›
 	return true;
 
 }
 bool CycleCharArray::put(const  char * buff, const unsigned size)
 {
 	unsigned remainSize = _bufferSize - _dataSize;
-	if (remainSize < size) //ÈİÁ¿²»×ã
+	if (remainSize < size) //å®¹é‡ä¸è¶³
 	{
 		return false;
 	}
 
-	//size¼ÇÂ¼
+	//sizeè®°å½•
 	_dataSize += size;
 
-	//´æÊı¾İ
-	if (_bufferSize - _lastIndex >= size)  //_lastIndexÒÔºóµÄÇøÓò×ã¹»·ÅÈëÊı¾İ
+	//å­˜æ•°æ®
+	if (_bufferSize - _lastIndex >= size)  //_lastIndexä»¥åçš„åŒºåŸŸè¶³å¤Ÿæ”¾å…¥æ•°æ®
 	{
 		std::memcpy(_buffer + _lastIndex, buff, size);
 		_lastIndex += size;
-		assert(_lastIndex <= _bufferSize); //±ØĞëÂú×ã
-		if (_lastIndex == _bufferSize)//ºóÃæ²¿·Ö¸ÕºÃ×°Âú
+		assert(_lastIndex <= _bufferSize); //å¿…é¡»æ»¡è¶³
+		if (_lastIndex == _bufferSize)//åé¢éƒ¨åˆ†åˆšå¥½è£…æ»¡
 		{
 			_lastIndex = 0;
 		}
 	}
-	else//_lastIndexÒÔºóµÄÇøÓò²»¹»·ÅÊı¾İ
+	else//_lastIndexä»¥åçš„åŒºåŸŸä¸å¤Ÿæ”¾æ•°æ®
 	{
 		unsigned firstAreaSize = _bufferSize - _lastIndex;
 		unsigned secondAreaSize = size - firstAreaSize;
@@ -71,7 +71,7 @@ bool CycleCharArray::put(const  char * buff, const unsigned size)
 		std::memcpy(_buffer, buff + firstAreaSize, secondAreaSize);
 		_lastIndex = secondAreaSize;
 	}
-	//·µ»Ø
+	//è¿”å›
 	return true;
 }
 

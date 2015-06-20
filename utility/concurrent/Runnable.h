@@ -8,7 +8,7 @@ namespace utility{
 		{
 		public:
 			/*
-				ÔËĞĞrunable
+				è¿è¡Œrunable
 				@exception no throw
 			*/
 			virtual void run() = 0;

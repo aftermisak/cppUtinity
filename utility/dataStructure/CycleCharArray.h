@@ -6,7 +6,7 @@ namespace utility
 	namespace dataStructure
 	{
 		/**
-		×Ö½ÚĞÍÑ­»·Êı×é
+		å­—èŠ‚å‹å¾ªç¯æ•°ç»„
 		*/
 		class CycleCharArray : private UnCopyable
 		{
@@ -14,29 +14,29 @@ namespace utility
 			explicit CycleCharArray(unsigned size);
 			~CycleCharArray();
 			/*
-			@param(out) buff »ñÈ¡Êı¾İµÄÄÚ´æÇø
-			@param size  Ïë»ñÈ¡µÄ³¤¶È
-			@return ³É¹¦·µ»Ø true£¬Êı¾İ²»×ã·µ»Øfalse
+			@param(out) buff è·å–æ•°æ®çš„å†…å­˜åŒº
+			@param size  æƒ³è·å–çš„é•¿åº¦
+			@return æˆåŠŸè¿”å› trueï¼Œæ•°æ®ä¸è¶³è¿”å›false
 			*/
 			bool get(char * buff, const unsigned  size) const;
 			/*
-			@param(out) buff ·ÅÈëÊı¾İµÄÄÚ´æÇø
-			@param size Êı¾İ³¤¶È
-			@return Èç¹û³É¹¦¼ÓÈë£¬·µ»Øtrue£¬ ÈôÑ­»·Êı×éµÄÈİÁ¿²»×ãÔò·µ»Øfalse
+			@param(out) buff æ”¾å…¥æ•°æ®çš„å†…å­˜åŒº
+			@param size æ•°æ®é•¿åº¦
+			@return å¦‚æœæˆåŠŸåŠ å…¥ï¼Œè¿”å›trueï¼Œ è‹¥å¾ªç¯æ•°ç»„çš„å®¹é‡ä¸è¶³åˆ™è¿”å›false
 			*/
 			bool put(const  char * buff, const unsigned size);
 
-			//É¾³ıÇ°ÃæµÄsize¸öÊı¾İ£¬³É¹¦·µ»Øtrue£¬size²»×ã·µ»Øfalse
+			//åˆ é™¤å‰é¢çš„sizeä¸ªæ•°æ®ï¼ŒæˆåŠŸè¿”å›trueï¼Œsizeä¸è¶³è¿”å›false
 			bool popFront(const unsigned size = 0);
 
 
 			unsigned getDataSize()const{ return _dataSize; }
 		private:
 
-			unsigned _lastIndex; //ÏÂÒ»¸ö¿ÉÒÔ²åÈëÊı¾İµÄindex init 0
-			char * _buffer; //×°Êı¾İµÄÄÚ´æÇøÓò
-			unsigned _dataSize; //µ±Ç°Êı¾İ³¤¶È init 0
-			unsigned _bufferSize; //×ÜÈİÁ¿
+			unsigned _lastIndex; //ä¸‹ä¸€ä¸ªå¯ä»¥æ’å…¥æ•°æ®çš„index init 0
+			char * _buffer; //è£…æ•°æ®çš„å†…å­˜åŒºåŸŸ
+			unsigned _dataSize; //å½“å‰æ•°æ®é•¿åº¦ init 0
+			unsigned _bufferSize; //æ€»å®¹é‡
 		};
 	};// end of namespace dataStructure
 

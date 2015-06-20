@@ -8,7 +8,7 @@ namespace utility
 	namespace algorithm
 	{
 		/*
-			×ÖµäË³Ğò±È½Ï×Ö·û´®£¬µ«ÊÇºöÂÔ´óĞ¡Ğ´
+			å­—å…¸é¡ºåºæ¯”è¾ƒå­—ç¬¦ä¸²ï¼Œä½†æ˜¯å¿½ç•¥å¤§å°å†™
 		*/
 		int strCompareIgnoreCase(const string& one, const string& two);
 	};

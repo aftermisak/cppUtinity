@@ -6,13 +6,13 @@ namespace utility{
 		class Future
 		{
 		public:
-			//µÈ´ıÖÁÈÎÎñÍê³É
+			//ç­‰å¾…è‡³ä»»åŠ¡å®Œæˆ
 			virtual void wait() = 0;
 
-			//µÈ´ımsºÁÃë£¬ÈÎÎñÍê³É·µ»Øtrue,³¬Ê±·µ»Øfalse
+			//ç­‰å¾…msæ¯«ç§’ï¼Œä»»åŠ¡å®Œæˆè¿”å›true,è¶…æ—¶è¿”å›false
 			virtual bool wait( unsigned ms ) = 0;
 
-			//µÈ´ı»ñÈ¡½á¹û
+			//ç­‰å¾…è·å–ç»“æœ
 			virtual T get() = 0;
 
 			virtual ~Future(){}

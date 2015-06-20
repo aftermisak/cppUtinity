@@ -2,9 +2,9 @@
 
 
 
-//const double to_ms_factor = 1000.0 / CLOCKS_PER_SEC;//win32�ϻ�ȡ�����Ǻ��룬linux������΢��,��������ӽ�ʱ��ת��Ϊ���뵥λ
+//const double to_ms_factor = 1000.0 / CLOCKS_PER_SEC;//win32上获取到的是毫秒，linux上面是微秒,用这个因子将时钟转换为毫秒单位
 
-//��ȡ���������˶�����
+//获取程序运行了多少秒
 double getApplicationSeconds();
-//��ȡ���������˶��ٺ���
+//获取程序运行了多少毫秒
 double getApplicationMilliSeconds();

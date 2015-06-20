@@ -143,32 +143,32 @@ void SimpleReadWriteLock::readLock()
 	bool isFirstReaderNow = false;
 	{
 		LockGuard lg(*_dataLock);
-		while( _writerCount > 0 || _writeTryCount > 0)//»Áπ˚–¥◊≈ ˝¡ø¥Û”⁄0£¨ªÚ’ﬂ”––¥µ»¥˝ »√¬∑µ»¥˝
+		while( _writerCount > 0 || _writeTryCount > 0)//Â¶ÇÊûúÂÜôÁùÄÊï∞ÈáèÂ§ß‰∫é0ÔºåÊàñËÄÖÊúâÂÜôÁ≠âÂæÖ ËÆ©Ë∑ØÁ≠âÂæÖ
 		{
 			_dataLockCon->wait();
 		}
-		bool isFirstReaderNow = 0 == _readerCount++;  //µ±«∞ «≤ª «µ⁄“ª∏ˆ∂¡’ﬂ
-	}//_dataLock‘⁄¥ÀΩ‚À¯
+		bool isFirstReaderNow = 0 == _readerCount++;  //ÂΩìÂâçÊòØ‰∏çÊòØÁ¨¨‰∏Ä‰∏™ËØªËÄÖ
+	}//_dataLockÂú®Ê≠§Ëß£ÈîÅ
 
-	if( isFirstReaderNow )//»Áπ˚ «µ⁄“ª∏ˆ∂¡’ﬂ£¨–Ë“™Ω´–¥À¯À¯…œ
+	if( isFirstReaderNow )//Â¶ÇÊûúÊòØÁ¨¨‰∏Ä‰∏™ËØªËÄÖÔºåÈúÄË¶ÅÂ∞ÜÂÜôÈîÅÈîÅ‰∏ä
 	{
-		_readLock->lock(); //Ω´–¥À¯À¯∂®,÷¬ π≤ªƒ‹ªÒ»°–¥À¯
+		_readLock->lock(); //Â∞ÜÂÜôÈîÅÈîÅÂÆö,Ëá¥‰Ωø‰∏çËÉΩËé∑ÂèñÂÜôÈîÅ
 	}
 	
 }
 void SimpleReadWriteLock::writeLock()
 {
 	{
-		LockGuard lg(*_dataLock);// ˝æ›À¯∂®
-		++_writeTryCount;      //–¥µ»¥˝ ˝¡ø+1
+		LockGuard lg(*_dataLock);//Êï∞ÊçÆÈîÅÂÆö
+		++_writeTryCount;      //ÂÜôÁ≠âÂæÖÊï∞Èáè+1
 	}
-	_realWriteLock->lock(); //º”À¯
+	_realWriteLock->lock(); //Âä†ÈîÅ
 
 	{
-		LockGuard lg(*_dataLock);;// ˝æ›À¯∂®
-		--_writeTryCount;  //–¥µ»¥˝ ˝æ›-1
-		++_writerCount;  //–¥»Î’ﬂ ˝¡øº«¬º+1
-		//_dataLockCon->notifyAll();//ªΩ–—ø…ƒ‹µ»¥˝µƒ∂¡œﬂ≥Ã
+		LockGuard lg(*_dataLock);;//Êï∞ÊçÆÈîÅÂÆö
+		--_writeTryCount;  //ÂÜôÁ≠âÂæÖÊï∞ÊçÆ-1
+		++_writerCount;  //ÂÜôÂÖ•ËÄÖÊï∞ÈáèËÆ∞ÂΩï+1
+		//_dataLockCon->notifyAll();//Âî§ÈÜíÂèØËÉΩÁ≠âÂæÖÁöÑËØªÁ∫øÁ®ã
 		//_dataLockCon->notify();
 	}
 }
@@ -178,18 +178,18 @@ bool SimpleReadWriteLock::readLock(unsigned ms)
 {
 	unsigned remainMs = ms;
 	unsigned msBeginWait = (unsigned)getApplicationMilliSeconds();
-	LockGuard lg(*_dataLock);   //∂¡–¥À¯µƒ ˝æ›À¯∂®
-	while( _writerCount > 0 || _writeTryCount > 0 )//»Áπ˚–¥◊≈ ˝¡ø¥Û”⁄0  ªÚ’ﬂ–¥≥¢ ‘ ˝¡ø¥Û”⁄0£¨»√À¯µ»¥˝
+	LockGuard lg(*_dataLock);   //ËØªÂÜôÈîÅÁöÑÊï∞ÊçÆÈîÅÂÆö
+	while( _writerCount > 0 || _writeTryCount > 0 )//Â¶ÇÊûúÂÜôÁùÄÊï∞ÈáèÂ§ß‰∫é0  ÊàñËÄÖÂÜôÂ∞ùËØïÊï∞ÈáèÂ§ß‰∫é0ÔºåËÆ©ÈîÅÁ≠âÂæÖ
 	{
-		if(!_dataLockCon->wait( remainMs )) //≥¨ ±
+		if(!_dataLockCon->wait( remainMs )) //Ë∂ÖÊó∂
 		{
 			return false;
 		}
-		else//Œ¥≥¨ ±£¨µ´ «–Ë“™ºı»•µ»¥˝¡À∂‡æ√ ±º‰£¨“‘±„ºÃ–¯µ»¥˝µƒ π”√
+		else//Êú™Ë∂ÖÊó∂Ôºå‰ΩÜÊòØÈúÄË¶ÅÂáèÂéªÁ≠âÂæÖ‰∫ÜÂ§ö‰πÖÊó∂Èó¥Ôºå‰ª•‰æøÁªßÁª≠Á≠âÂæÖÁöÑ‰ΩøÁî®
 		{
 			
 			unsigned msWait = (unsigned)getApplicationMilliSeconds() - msBeginWait;
-			if( msWait >= remainMs )//ø…ƒ‹∑¢…˙µƒ«Èøˆ£¨“≤≈–∂®Œ™“—æ≠≥¨ ±
+			if( msWait >= remainMs )//ÂèØËÉΩÂèëÁîüÁöÑÊÉÖÂÜµÔºå‰πüÂà§ÂÆö‰∏∫Â∑≤ÁªèË∂ÖÊó∂
 			{
 				return false;
 			}
@@ -199,9 +199,9 @@ bool SimpleReadWriteLock::readLock(unsigned ms)
 			}
 		}
 	}
-	if( 0 == _readerCount++ )//∂¡»À ˝º«¬º,≤¢«“»Áπ˚ «µ⁄“ª∏ˆ∂¡’ﬂ£¨æÕ∞—–¥À¯º”…œ
+	if( 0 == _readerCount++ )//ËØª‰∫∫Êï∞ËÆ∞ÂΩï,Âπ∂‰∏îÂ¶ÇÊûúÊòØÁ¨¨‰∏Ä‰∏™ËØªËÄÖÔºåÂ∞±ÊääÂÜôÈîÅÂä†‰∏ä
 	{
-		_readLock->lock(); //Ω´–¥À¯À¯∂®,÷¬ π≤ªƒ‹ªÒ»°–¥À¯
+		_readLock->lock(); //Â∞ÜÂÜôÈîÅÈîÅÂÆö,Ëá¥‰Ωø‰∏çËÉΩËé∑ÂèñÂÜôÈîÅ
 	}
 	return true;
 }
@@ -213,16 +213,16 @@ bool SimpleReadWriteLock::writeLock( unsigned ms )
 	}
 	bool result = _realWriteLock->lock( ms );
 
-	{// «∑Òµ»¥˝≥…π¶∂º–Ë“™Ω´–¥≥¢ ‘ ˝µ›ºı
+	{//ÊòØÂê¶Á≠âÂæÖÊàêÂäüÈÉΩÈúÄË¶ÅÂ∞ÜÂÜôÂ∞ùËØïÊï∞ÈÄíÂáè
 		LockGuard lg(*_dataLock);
 		--_writeTryCount;
-		if( result )//º”À¯…Í«Î≥…π¶
+		if( result )//Âä†ÈîÅÁî≥ËØ∑ÊàêÂäü
 		{
-			++_writerCount;  //–¥»Î»À ˝º«¬º
+			++_writerCount;  //ÂÜôÂÖ•‰∫∫Êï∞ËÆ∞ÂΩï
 		}
 		else
 		{
-			_dataLockCon->notifyAll();  //÷ª”–√ªº”À¯≥…π¶µƒ«Èøˆ£¨≤≈”–±ÿ“™ªΩ–—µ»¥˝
+			_dataLockCon->notifyAll();  //Âè™ÊúâÊ≤°Âä†ÈîÅÊàêÂäüÁöÑÊÉÖÂÜµÔºåÊâçÊúâÂøÖË¶ÅÂî§ÈÜíÁ≠âÂæÖ
 		}
 	}
 	return result;
@@ -233,10 +233,10 @@ void SimpleReadWriteLock::readUnlock()
 	bool isLastReader = false;
 
 	{
-		LockGuard lg(*_dataLock);//∂¡–¥À¯µƒ ˝æ›À¯∂®
+		LockGuard lg(*_dataLock);//ËØªÂÜôÈîÅÁöÑÊï∞ÊçÆÈîÅÂÆö
 		isLastReader = 0 ==  --_readerCount;
 	}//
-	if( isLastReader ) //»Áπ˚◊Ó∫Û“ª∏ˆ∂¡’ﬂ¿Îø™£¨–Ë“™Ω´–¥À¯Ω‚À¯,÷¬ π–¥À¯ø…“‘±ªªÒ»°
+	if( isLastReader ) //Â¶ÇÊûúÊúÄÂêé‰∏Ä‰∏™ËØªËÄÖÁ¶ªÂºÄÔºåÈúÄË¶ÅÂ∞ÜÂÜôÈîÅËß£ÈîÅ,Ëá¥‰ΩøÂÜôÈîÅÂèØ‰ª•Ë¢´Ëé∑Âèñ
 	{
 		_realWriteLock->unlock();
 	}
@@ -244,12 +244,12 @@ void SimpleReadWriteLock::readUnlock()
 void SimpleReadWriteLock::writeUnlock()
 {
 	{
-		LockGuard lg(*_dataLock);;//∂¡–¥À¯µƒ ˝æ›À¯∂®
-		--_writerCount;//º«¬ººı…Ÿ
-		_dataLockCon->notifyAll();//ªΩ–—ø…ƒ‹µ»¥˝µƒœﬂ≥Ã
+		LockGuard lg(*_dataLock);;//ËØªÂÜôÈîÅÁöÑÊï∞ÊçÆÈîÅÂÆö
+		--_writerCount;//ËÆ∞ÂΩïÂáèÂ∞ë
+		_dataLockCon->notifyAll();//Âî§ÈÜíÂèØËÉΩÁ≠âÂæÖÁöÑÁ∫øÁ®ã
 	}//
 
-	_realWriteLock->unlock();//Ω‚À¯
+	_realWriteLock->unlock();//Ëß£ÈîÅ
 	
 }
 SimpleReadWriteLock::LockImp::LockImp( SimpleReadWriteLock * readWriteLockImp ,LockType lockType):

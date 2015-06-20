@@ -7,8 +7,8 @@ namespace utility
 {
 
 	/**
-		ÀÁ¶èÄ£Ê½£¬·ÇÏß³Ì°²È«µ¥ÀıÄ£°å
-		Ê¹ÓÃ·½Ê½£¬¼Ì³Ğ¸ÃÀà£¬±àÒë½«ÊµÀı»¯ÏàÓ¦°æ±¾
+		æ‡’æƒ°æ¨¡å¼ï¼Œéçº¿ç¨‹å®‰å…¨å•ä¾‹æ¨¡æ¿
+		ä½¿ç”¨æ–¹å¼ï¼Œç»§æ‰¿è¯¥ç±»ï¼Œç¼–è¯‘å°†å®ä¾‹åŒ–ç›¸åº”ç‰ˆæœ¬
 	*/
 	template<class T>
 	class Singleton : private UnCopyable
@@ -24,8 +24,8 @@ namespace utility
 		return &instance;
 	}
 	/*
-		¼¢¶öÄ£Ê½µ¥Àı£¬Ïß³Ì°²È«£¬Õâ¸ö°æ±¾µÄµ¥Àı£¬²»ÄÜ¹»ÔÚ¾²Ì¬³õÊ¼»¯Ê±±»µ÷ÓÃ,
-	ÒòÎª¾²Ì¬³õÊ¼»¯Ê±£¬µ¥ÀıµÄÊµÀı»¯²»Ò»¶¨Íê³É¡£
+		é¥¥é¥¿æ¨¡å¼å•ä¾‹ï¼Œçº¿ç¨‹å®‰å…¨ï¼Œè¿™ä¸ªç‰ˆæœ¬çš„å•ä¾‹ï¼Œä¸èƒ½å¤Ÿåœ¨é™æ€åˆå§‹åŒ–æ—¶è¢«è°ƒç”¨,
+	å› ä¸ºé™æ€åˆå§‹åŒ–æ—¶ï¼Œå•ä¾‹çš„å®ä¾‹åŒ–ä¸ä¸€å®šå®Œæˆã€‚
 	*/
 	template<class T>
 	class SingletonHTS : private UnCopyable
@@ -44,9 +44,9 @@ namespace utility
 
 	
 	/**
-		ÀÁ¶èÄ£Ê½Ïß³Ì°²È«µ¥ÀıÄ£°å
-		Ê¹ÓÃ·½Ê½£¬¼Ì³Ğ¸ÃÀà£¬±àÒë½«ÊµÀı»¯ÏàÓ¦°æ±¾,Õâ¸ö°æ±¾µÄµ¥Àı£¬²»ÄÜ¹»ÔÚ¾²Ì¬³õÊ¼»¯Ê±±»µ÷ÓÃ,
-	ÒòÎª¾²Ì¬³õÊ¼»¯Ê±Í¬²½µÄĞÅºÅÁ¿Ã»ÓĞ±»³õÊ¼»¯
+		æ‡’æƒ°æ¨¡å¼çº¿ç¨‹å®‰å…¨å•ä¾‹æ¨¡æ¿
+		ä½¿ç”¨æ–¹å¼ï¼Œç»§æ‰¿è¯¥ç±»ï¼Œç¼–è¯‘å°†å®ä¾‹åŒ–ç›¸åº”ç‰ˆæœ¬,è¿™ä¸ªç‰ˆæœ¬çš„å•ä¾‹ï¼Œä¸èƒ½å¤Ÿåœ¨é™æ€åˆå§‹åŒ–æ—¶è¢«è°ƒç”¨,
+	å› ä¸ºé™æ€åˆå§‹åŒ–æ—¶åŒæ­¥çš„ä¿¡å·é‡æ²¡æœ‰è¢«åˆå§‹åŒ–
 	*/
 	template<class T>
 	class SingletonTS : private UnCopyable
@@ -56,7 +56,7 @@ namespace utility
 	private:
 		static std::mutex instanceMutex;
 	};
-	template<class T> std::mutex SingletonTS<T>::instanceMutex;//Ä¬ÈÏ¹¹Ôì
+	template<class T> std::mutex SingletonTS<T>::instanceMutex;//é»˜è®¤æ„é€ 
 
 	template<class T>
 	T* SingletonTS<T>::getInstance()	
@@ -64,7 +64,7 @@ namespace utility
 		static T * instance = nullptr;
 		if( instance == nullptr )
 		{
-			//Ëø
+			//é”
 			lock_guard<std::mutex> lg(SingletonTS<T>::instanceMutex);
 			if(instance == nullptr)
 			{

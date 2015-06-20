@@ -10,7 +10,7 @@
 namespace utility{
 	namespace concurrenct{
 
-		//¿ÉÉèÖÃÊ±¼äËø
+		//å¯è®¾ç½®æ—¶é—´é”
 		class SimpleLock : public Lock ,private UnCopyable
 		{
 		private:
@@ -40,7 +40,7 @@ namespace utility{
 			};
 		};
 		
-		//¿ÉÉèÖÃÊ±¼ä¿ÉÖØÈëËø
+		//å¯è®¾ç½®æ—¶é—´å¯é‡å…¥é”
 		class ReentrantLock : public Lock, private UnCopyable
 		{
 		private:
@@ -86,9 +86,9 @@ namespace utility{
 
 		//	~LockGuard(){ m_theLock->unlock(); }
 		//private:
-		//	//²»¿É¿½±´
+		//	//ä¸å¯æ‹·è´
 		//	LockGuard(const LockGuard& rhs) = delete;
-		//	//²»¿Épass by value
+		//	//ä¸å¯pass by value
 		//	LockGuard& operator=(const LockGuard& rhs) = delete;
 		//private:
 		//	LockPointer m_theLock;
@@ -112,10 +112,10 @@ namespace utility{
 		//}
 		
 		/*
-			»ù´¡ ¶ÁĞ´ËøÊµÏÖ¡£
-			¸ÃÀàÊÇĞ´ËøÓÅÏÈµÄÊµÏÖ£¬Ò»µ©·¢ÉúĞ´ËøÉêÇë£¬ÔÚµ±Ç°Ğ´Ëø»ñÈ¡µ½ÉêÇë»òÕß³¬Ê±Ö®Ç°(Ò²¾ÍÊÇ´æÔÚĞ´ËøÉêÇëÊ±),
-		ºó·¢ÉúµÄ¶ÁËø¶¼»á±»×èÈû¡£Èç¹ûĞ´Èë¹ıÓÚÆµ·±»òÕß ¼´±ã²»Æµ·±µ«Ğ´ÈëÊ±¼ä»¨·ÑÌ«¾Ã£¬¶¼¿ÉÄÜÔì³É¶ÁËø¼¢¶ö
-			¸ÃÀà²»±£Ö¤¹«Æ½ĞÔ£¬ºóµ½µÄËøÉêÇë¿ÉÄÜ»áÏÈ»ñµÃ£¬ÎŞÂÛÊÇ¶ÁËø£¬»¹ÊÇĞ´ËøÖ®¼äµÄ¹«Æ½¶¼²»Ìá¹©¡£
+			åŸºç¡€ è¯»å†™é”å®ç°ã€‚
+			è¯¥ç±»æ˜¯å†™é”ä¼˜å…ˆçš„å®ç°ï¼Œä¸€æ—¦å‘ç”Ÿå†™é”ç”³è¯·ï¼Œåœ¨å½“å‰å†™é”è·å–åˆ°ç”³è¯·æˆ–è€…è¶…æ—¶ä¹‹å‰(ä¹Ÿå°±æ˜¯å­˜åœ¨å†™é”ç”³è¯·æ—¶),
+		åå‘ç”Ÿçš„è¯»é”éƒ½ä¼šè¢«é˜»å¡ã€‚å¦‚æœå†™å…¥è¿‡äºé¢‘ç¹æˆ–è€… å³ä¾¿ä¸é¢‘ç¹ä½†å†™å…¥æ—¶é—´èŠ±è´¹å¤ªä¹…ï¼Œéƒ½å¯èƒ½é€ æˆè¯»é”é¥¥é¥¿
+			è¯¥ç±»ä¸ä¿è¯å…¬å¹³æ€§ï¼Œååˆ°çš„é”ç”³è¯·å¯èƒ½ä¼šå…ˆè·å¾—ï¼Œæ— è®ºæ˜¯è¯»é”ï¼Œè¿˜æ˜¯å†™é”ä¹‹é—´çš„å…¬å¹³éƒ½ä¸æä¾›ã€‚
 		*/
 		class SimpleReadWriteLock : public ReadWriteLock, private UnCopyable
 		{
@@ -134,13 +134,13 @@ namespace utility{
 				virtual bool lock( unsigned ms ) override;
 				virtual void unlock() override;
 				/*
-					¶ÁĞ´Ëø²»Ö§³Ö¸Ã²Ù×÷
-					¸Ã·½·¨Ö»»áÅ×³ö logic_error
+					è¯»å†™é”ä¸æ”¯æŒè¯¥æ“ä½œ
+					è¯¥æ–¹æ³•åªä¼šæŠ›å‡º logic_error
 				*/
 				virtual shared_ptr<Condition> newSharedPtrCondition() override;
 				/*
-					¶ÁĞ´Ëø²»Ö§³Ö¸Ã²Ù×÷
-					¸Ã·½·¨Ö»»áÅ×³ö logic_error
+					è¯»å†™é”ä¸æ”¯æŒè¯¥æ“ä½œ
+					è¯¥æ–¹æ³•åªä¼šæŠ›å‡º logic_error
 				*/
 				virtual Condition* newCondition() override;
 

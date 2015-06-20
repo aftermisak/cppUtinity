@@ -10,10 +10,10 @@ namespace concurrenct{
 	class  Executor
 	{
 	public:
-		//Ìá½»runnable ¶ÔÏóÊ½
+		//æäº¤runnable å¯¹è±¡å¼
 		//virtual void execute( shared_ptr<Runnable> runnable ) = 0;
 
-		//Ìá½»runable º¯ÊıÊ½
+		//æäº¤runable å‡½æ•°å¼
 		virtual void execute( FunRunnable f ) = 0;
 
 		virtual ~Executor(){}
@@ -21,21 +21,21 @@ namespace concurrenct{
 	class ExecuteService : public Executor
 	{
 	public:
-		//¿ªÆôÏß³Ì³Ø
+		//å¼€å¯çº¿ç¨‹æ± 
 		virtual void begin() = 0;
 
 
-		//¹Ø±ÕÏß³Ì³Ø£¬¸Ã·½·¨²»»áÓ°ÏìµÈ´ı¶ÓÁĞÖĞµÄÈÎÎñ
+		//å…³é—­çº¿ç¨‹æ± ï¼Œè¯¥æ–¹æ³•ä¸ä¼šå½±å“ç­‰å¾…é˜Ÿåˆ—ä¸­çš„ä»»åŠ¡
 		virtual void shutdown() = 0;
 
 
 
-		//¹Ø±ÕÏß³Ì³Ø£¬¸Ã·½·¨»á½«µÈ´ı¶ÓÁĞÇå¿Õ£¬Ö»»á½«µ±Ç°ÕıÔÚÔËĞĞµÄÈÎÎñÖ´ĞĞÍê³É
+		//å…³é—­çº¿ç¨‹æ± ï¼Œè¯¥æ–¹æ³•ä¼šå°†ç­‰å¾…é˜Ÿåˆ—æ¸…ç©ºï¼Œåªä¼šå°†å½“å‰æ­£åœ¨è¿è¡Œçš„ä»»åŠ¡æ‰§è¡Œå®Œæˆ
 		virtual void shutdownNow() = 0;
 
 
 
-		//ÈôÏß³Ì³Ø¹Ø±Õ£¬ÈÎÎñ¶ÓÁĞÍê³É£¬²¢ÇÒËùÓĞÏß³ÌÒÑ¾­¹Ø±Õ£¬·µ»Øtrue£¬·ñÔò£¬·µ»Øfalse
+		//è‹¥çº¿ç¨‹æ± å…³é—­ï¼Œä»»åŠ¡é˜Ÿåˆ—å®Œæˆï¼Œå¹¶ä¸”æ‰€æœ‰çº¿ç¨‹å·²ç»å…³é—­ï¼Œè¿”å›trueï¼Œå¦åˆ™ï¼Œè¿”å›false
 		virtual bool isStoped() = 0;
 
 

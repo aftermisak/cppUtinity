@@ -8,9 +8,9 @@ namespace utility
 	namespace algorithm
 	{
 		/*
-			拷贝[frist,last)的数据到[first,->)
+			鎷疯礉[frist,last)鐨勬暟鎹埌[first,->)
 			
-			返回下一个迭代器
+			杩斿洖涓嬩竴涓凯浠ｅ櫒
 		*/
 		template<typename ForwardIteratorInput, typename ForwardIteratorOutput>
 		ForwardIteratorOutput copy(ForwardIteratorInput first, ForwardIteratorInput last, ForwardIteratorOutput first2)
@@ -23,9 +23,9 @@ namespace utility
 		}
 
 		/*
-		拷贝[frist,last)的数据到[first,->)，如果满足Fun() == true
+		鎷疯礉[frist,last)鐨勬暟鎹埌[first,->)锛屽鏋滄弧瓒矲un() == true
 
-		返回下一个迭代器
+		杩斿洖涓嬩竴涓凯浠ｅ櫒
 		*/
 		template<typename Fun, typename ForwardIteratorInput, typename ForwardIteratorOutput>
 		ForwardIteratorOutput copy(ForwardIteratorInput first, ForwardIteratorInput last, ForwardIteratorOutput first2, Fun f)
@@ -41,7 +41,7 @@ namespace utility
 			return first2;
 		}
 		/*
-			使用value填充给定区间
+			浣跨敤value濉厖缁欏畾鍖洪棿
 		*/
 		template<typename ForwardIteratorOutput>
 		void fill(ForwardIteratorOutput first, ForwardIteratorOutput last, typename const  iterator_traits<ForwardIteratorOutput>::value_type& value)

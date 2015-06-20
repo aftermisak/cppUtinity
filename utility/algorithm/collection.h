@@ -8,9 +8,9 @@ namespace utility
 	namespace algorithm
 	{
 		/*
-			Èç¹û[first2, last2)µÄÈÎÒâÔªËØ£¬ÔÚ[first, last)ÖĞ¶¼´æÔÚÒ»¸öÔªËØÊ¹µÃf(*iterInRange1, *iterInRange2) == true
-		Ôò·µ»Øtrue£¬·ñÔò·µ»Øfalse
-			Ä¬ÈÏÇé¿öÏÂÒªÇóÔªËØÖ§³Ö==²Ù×÷£¬´ËÊ±¸Ãº¯ÊıµÄĞĞÎª¾ÍÊÇÅĞ¶Ï¼¯ºÏ2ÊÇ·ñÎª¼¯ºÏ1µÄ×Ó¼¯
+			å¦‚æœ[first2, last2)çš„ä»»æ„å…ƒç´ ï¼Œåœ¨[first, last)ä¸­éƒ½å­˜åœ¨ä¸€ä¸ªå…ƒç´ ä½¿å¾—f(*iterInRange1, *iterInRange2) == true
+		åˆ™è¿”å›trueï¼Œå¦åˆ™è¿”å›false
+			é»˜è®¤æƒ…å†µä¸‹è¦æ±‚å…ƒç´ æ”¯æŒ==æ“ä½œï¼Œæ­¤æ—¶è¯¥å‡½æ•°çš„è¡Œä¸ºå°±æ˜¯åˆ¤æ–­é›†åˆ2æ˜¯å¦ä¸ºé›†åˆ1çš„å­é›†
 		*/
 		template< typename ForwardIterator, typename ForwardIterator2, typename Fn = equal_to<void> >
 		bool includes(ForwardIterator first, ForwardIterator last, ForwardIterator2 first2, ForwardIterator2 last2, Fn f = equal_to<>())
@@ -20,17 +20,17 @@ namespace utility
 				ForwardIterator it;
 				for ( it = first; it != last; ++it)
 				{
-					if (f(*it, *first2))//ÕÒµ½·ûºÏ£¨Ä¬ÈÏ==£©µÄ¾ÍÍË³öÑ­»·
+					if (f(*it, *first2))//æ‰¾åˆ°ç¬¦åˆï¼ˆé»˜è®¤==ï¼‰çš„å°±é€€å‡ºå¾ªç¯
 						break;
 				}
-				if (it == last)//Èç¹û³ÉÁ¢ËµÃ÷ÉÏÃæµÄÑ­»·Ã»ÓĞÒ»¸ö·ûºÏµÄ
+				if (it == last)//å¦‚æœæˆç«‹è¯´æ˜ä¸Šé¢çš„å¾ªç¯æ²¡æœ‰ä¸€ä¸ªç¬¦åˆçš„
 					break;
 			}
 			return first2 == last2;
 		}
 		
 		/*
-			½«ÒÑÅÅĞòµÄ[first,last),[first2,last2)¹é²¢µ½[result, ->)ÖĞ
+			å°†å·²æ’åºçš„[first,last),[first2,last2)å½’å¹¶åˆ°[result, ->)ä¸­
 		*/
 		template< typename ForwardIterator, typename ForwardIterator2, typename ForwardIteratorOutput, typename typename Fn = less<void>>
 		void merge(ForwardIterator first, ForwardIterator last, ForwardIterator2 first2, ForwardIterator2 last2, ForwardIteratorOutput result, Fn f = less<void>())
@@ -46,14 +46,14 @@ namespace utility
 					*result++ = *first2++;
 				}
 			}
-			if (first != last)//µÚÒ»²¿·ÖÓĞÊ£Óà
+			if (first != last)//ç¬¬ä¸€éƒ¨åˆ†æœ‰å‰©ä½™
 			{
 				for (; first != last;)
 				{
 					*result++ = *first++;
 				}
 			}
-			else if (first2 != last2)//µÚ¶ş²¿·ÖÓĞÊ£Óà
+			else if (first2 != last2)//ç¬¬äºŒéƒ¨åˆ†æœ‰å‰©ä½™
 			{
 				for (; first2 != last2;)
 				{
@@ -66,9 +66,9 @@ namespace utility
 			}
 		}
 		/*
-			°´ÕÕÀàËÆÓÚ×Ö·û´®±È½ÏµÄ·½Ê½±È½ÏÁ½¸ö·¶Î§
-		Èç¹û·¶Î§Ò»µÄ(Ä¬ÈÏÊ¹ÓÃĞ¡ÓÚ),Ğ¡ÓÚ·¶Î§2£¬·µ»Ø
-		true£¬·ñÔò·µ»Øfalse
+			æŒ‰ç…§ç±»ä¼¼äºå­—ç¬¦ä¸²æ¯”è¾ƒçš„æ–¹å¼æ¯”è¾ƒä¸¤ä¸ªèŒƒå›´
+		å¦‚æœèŒƒå›´ä¸€çš„(é»˜è®¤ä½¿ç”¨å°äº),å°äºèŒƒå›´2ï¼Œè¿”å›
+		trueï¼Œå¦åˆ™è¿”å›false
 		*/
 		template< typename ForwardIterator, typename ForwardIterator2, typename ForwardIteratorOutput, typename typename Fn = less<void>>
 		bool lexicographical_compare(ForwardIterator first, ForwardIterator last, ForwardIterator2 first2, ForwardIterator2 last2, ForwardIteratorOutput result, Fn f = less<void>())
@@ -80,7 +80,7 @@ namespace utility
 					return true;
 				}
 			}
-			if (first == last && first2 != last2)//¼¯ºÏÒ»±ÈÍê£¬¼¯ºÏ¶ş»¹Ã»ÓĞÍê
+			if (first == last && first2 != last2)//é›†åˆä¸€æ¯”å®Œï¼Œé›†åˆäºŒè¿˜æ²¡æœ‰å®Œ
 			{
 				return true;
 			}

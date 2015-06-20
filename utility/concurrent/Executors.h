@@ -19,8 +19,8 @@ namespace utility{
 
 		private:
 			/*
-				¼òÒ×Ïß³Ì³Ø£¬ÈÎÎñ°´ÕÕÌá½»µÄË³Ğò»ñµÃÖ´ĞĞÈ¨¡£
-			·½·¨ÃèÊö¼ûExecuteService
+				ç®€æ˜“çº¿ç¨‹æ± ï¼Œä»»åŠ¡æŒ‰ç…§æäº¤çš„é¡ºåºè·å¾—æ‰§è¡Œæƒã€‚
+			æ–¹æ³•æè¿°è§ExecuteService
 			*/
 			class  SimpleExecuteService final : public ExecuteService , private UnCopyable
 			{

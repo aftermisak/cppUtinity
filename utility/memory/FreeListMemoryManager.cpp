@@ -23,13 +23,13 @@ void* FreeListMemoryManager::getMemory(size_t size) NOEXCEPT
 
 	auto& _memoryListHead = _memoryListArray[indexOfList];
 	auto firstFreeNode = _memoryListHead._next;
-	if (nullptr != firstFreeNode)  //ÓĞ¿ÉÓÃµÄÒÑÊÍ·ÅÄÚ´æ
+	if (nullptr != firstFreeNode)  //æœ‰å¯ç”¨çš„å·²é‡Šæ”¾å†…å­˜
 	{
 		_memoryListHead._next = firstFreeNode->_next;
 		return (void*)firstFreeNode;
 	}
 	
-	//Ã»ÓĞ¿ÉÓÃµÄÒÑÊÍ·ÅÄÚ´æ,ÔòÉêÇëĞÂµÄÄÚ´æ
+	//æ²¡æœ‰å¯ç”¨çš„å·²é‡Šæ”¾å†…å­˜,åˆ™ç”³è¯·æ–°çš„å†…å­˜
 	void* newAppliedMemory = std::malloc(realApplySize);
 	return newAppliedMemory;
 }

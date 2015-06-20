@@ -44,7 +44,7 @@ void Executors::SimpleExecuteService::RunnableImp::run()
 {
 	while (true)
 	{
-		{//Èç¹ûÏß³Ì³ØÒÑ¾­¹Ø±Õ²¢ÇÒ¶ÓÁĞÒÑ¾­¿ÕÁË£¬ÍË³öÏß³Ì
+		{//å¦‚æœçº¿ç¨‹æ± å·²ç»å…³é—­å¹¶ä¸”é˜Ÿåˆ—å·²ç»ç©ºäº†ï¼Œé€€å‡ºçº¿ç¨‹
 			LockGuard lg(*this->_seSer->m_mainLock);
 			if (_seSer->m_isShutDown && _seSer->m_runnableQue.size() == 0)
 			{
@@ -52,11 +52,11 @@ void Executors::SimpleExecuteService::RunnableImp::run()
 			}
 		}
 		FunRunnable aRunnable = []()->void{};
-		{//Í¬²½ÇøÓò
+		{//åŒæ­¥åŒºåŸŸ
 			LockGuard lg(*this->_seSer->m_mainLock);
-			/*	Èç¹ûÖĞÃ»ÓĞÈÎÎñ£¬ÔòµÈ´ı£¬±»»½ĞÑµÄ¿ÉÄÜĞÔÖ»ÓĞÒ»ÖÖ£¬¾ÍÊÇÓĞĞÂÈÎÎñ¼ÓÈë¶ÓÁĞ¡£
-			³¬Ê±µÄ»°£¬ËµÃ÷Ã»ÓĞĞÂÈÎÎñ¼ÓÈë¶ÓÁĞ£¬²»Ê¹ÓÃwhilie-waitÄ£ĞÍ£¬ÊÇÎªÁËÃ¿´Îµ½Íâ
-			²ãÑ­»·È¥¼ì²éÏß³Ì³ØÊÇ·ñ¹Ø±Õ
+			/*	å¦‚æœä¸­æ²¡æœ‰ä»»åŠ¡ï¼Œåˆ™ç­‰å¾…ï¼Œè¢«å”¤é†’çš„å¯èƒ½æ€§åªæœ‰ä¸€ç§ï¼Œå°±æ˜¯æœ‰æ–°ä»»åŠ¡åŠ å…¥é˜Ÿåˆ—ã€‚
+			è¶…æ—¶çš„è¯ï¼Œè¯´æ˜æ²¡æœ‰æ–°ä»»åŠ¡åŠ å…¥é˜Ÿåˆ—ï¼Œä¸ä½¿ç”¨whilie-waitæ¨¡å‹ï¼Œæ˜¯ä¸ºäº†æ¯æ¬¡åˆ°å¤–
+			å±‚å¾ªç¯å»æ£€æŸ¥çº¿ç¨‹æ± æ˜¯å¦å…³é—­
 			*/
 			if (_seSer->m_runnableQue.size() == 0)
 			{
@@ -68,12 +68,12 @@ void Executors::SimpleExecuteService::RunnableImp::run()
 				_seSer->m_runnableQue.pop();
 			}
 		}
-		//Ö´ĞĞ
+		//æ‰§è¡Œ
 		aRunnable();
 	}
 
 	LockGuard lg(*this->_seSer->m_mainLock);
-	--_seSer->m_activeThreadNumber;//Ïß³Ì½áÊø£¬¼ÇÂ¼
+	--_seSer->m_activeThreadNumber;//çº¿ç¨‹ç»“æŸï¼Œè®°å½•
 }
 
 

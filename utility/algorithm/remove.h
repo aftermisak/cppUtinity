@@ -16,7 +16,7 @@ namespace utility
 			{
 				if (!f(*first, value))
 				{
-					*it++ = std::move(*first);//ÉáÈ¥Êı¾İ ÒÆ¶¯¸³Öµ
+					*it++ = std::move(*first);//èˆå»æ•°æ® ç§»åŠ¨èµ‹å€¼
 				}
 			}
 			return it;
