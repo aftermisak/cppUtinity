@@ -30,7 +30,7 @@ void* FreeListMemoryManager::getMemory(size_t size) NOEXCEPT
 	}
 	
 	//没有可用的已释放内存,则申请新的内存
-	void* newAppliedMemory = std::malloc(realApplySize);
+	void* newAppliedMemory = malloc(realApplySize);
 	return newAppliedMemory;
 }
 void FreeListMemoryManager::freeMemory(void* memory, size_t size) NOEXCEPT

@@ -86,7 +86,8 @@ void SimpleLock::ConditionForSimpleLock::wait()
 }
 bool SimpleLock::ConditionForSimpleLock::wait(unsigned ms)
 {
-	return m_condition.wait_for(*m_lock, std::chrono::milliseconds(ms)) == std::_Cv_status::no_timeout;
+    
+	return m_condition.wait_for(*m_lock, std::chrono::milliseconds(ms)) == std::cv_status::no_timeout;
 }
 void SimpleLock::ConditionForSimpleLock::notify() 
 {
@@ -111,7 +112,7 @@ void ReentrantLock::ConditionForReentrantLock::wait()
 }
 bool ReentrantLock::ConditionForReentrantLock::wait(unsigned ms)
 {
-	return m_condition.wait_for(*m_lock, std::chrono::milliseconds(ms)) == std::_Cv_status::no_timeout;
+	return m_condition.wait_for(*m_lock, std::chrono::milliseconds(ms)) == std::cv_status::no_timeout;
 }
 void ReentrantLock::ConditionForReentrantLock::notify() 
 {

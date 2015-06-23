@@ -48,7 +48,7 @@ void BlockMemoryManager::freeMemory(void* memory, size_t size) NOEXCEPT
 
 std::shared_ptr<BlockMemoryManager::MemoryBlock> BlockMemoryManager::createMemoryBlock(size_t size)
 {
-	void* resource = std::malloc(size);
+	void* resource = malloc(size);
 	if (nullptr == resource)
 	{
 		return nullptr;
@@ -59,7 +59,7 @@ std::shared_ptr<BlockMemoryManager::MemoryBlock> BlockMemoryManager::createMemor
 	set_new_handler(oldNewHandler);
 	if (nullptr == result)
 	{
-		std::free(resource);
+		free(resource);
 		return nullptr;
 	}
 	return std::shared_ptr<BlockMemoryManager::MemoryBlock>(result);
